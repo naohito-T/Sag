@@ -1,27 +1,36 @@
+# from selenium import webdriver
+
+# # Chrome のオプションを設定する
+# options = webdriver.ChromeOptions()
+
+# # Selenium Server に接続する
+# driver = webdriver.Remote(
+#     command_executor='http://localhost:4444/wd/hub',
+#     options=options,
+# )
+
+# # Selenium 経由でブラウザを操作する
+# driver.get('https://qiita.com')
+# print(driver.current_url)
+
+# # ブラウザを終了する
+# driver.quit()
+
+# 成功
 import os
+
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.expected_conditions import presence_of_element_located
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-if __name__ == '__main__':
-    # Selenium サーバーへ接続する。
-    driver = webdriver.Remote(
-        command_executor=os.environ["SELENIUM_URL"],
-        desired_capabilities=DesiredCapabilities.CHROME.copy()
-    )
-    # 任意のHTMLの要素が特定の状態になるまで待つ
-    # ドライバとタイムアウト値を指定
-    wait = WebDriverWait(driver, 10)
-    # Googleにアクセス
-    driver.get("https://google.com")
-    # "selenium"で検索
-    driver.find_element(By.NAME, "q").send_keys("selenium" + Keys.RETURN)
-    # 1件目の検索結果を取得(描画されるまで待機)
-    first_result = wait.until(
-        presence_of_element_located((By.CSS_SELECTOR, "h3")))
-    print(first_result.get_attribute("textContent"))
 
-    driver.quit()
+driver = webdriver.Remote(
+    command_executor=os.environ["SELENIUM_URL"],
+    desired_capabilities=DesiredCapabilities.FIREFOX.copy()
+)
+driver.implicitly_wait(5)
+
+driver.get("https://www.time-j.net/worldtime/country/jp")
+
+print(driver.find_element_by_xpath(
+    "/html/body/div/div[6]/div[1]/div/p[5]").text)
+driver.quit()
