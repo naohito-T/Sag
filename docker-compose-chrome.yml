@@ -1,0 +1,20 @@
+version: "3"
+services:
+  selenium-chrome:
+    image: selenium/standalone-chrome:4.1.2-20220217
+    ports:
+      - 4444:4444 # リファレンス指定のport
+      - 5900:5900
+  app:
+    build: ./app
+    # 相対パスで指定。appディレクトリをtarget(コンテナ側)のルートディレクトリに配置
+    volumes:
+      - ./app:/app
+      - /dev/shm:/dev/shm
+    # コンテナに渡す環境変数
+    environment:
+      SELENIUM_URL: http://selenium:4444/wd/hub
+      ENCODING: UTF-8
+    # 何も起動するものがない場合、ttyをtrue
+    tty: true
+

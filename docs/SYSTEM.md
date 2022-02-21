@@ -15,3 +15,16 @@
 ## 機能要件
 
 Seleniumを使う(Docker)
+
+## Docker
+
+[リファレンス](https://github.com/SeleniumHQ/docker-selenium)
+
+## Selenium
+
+Web ブラウザ
+Chrome, Firefox, IE, Opera など
+WebDriver(ブラウザのバージョンに合ったバージョンを選ばないと動作しないという若干面倒な問題があるのですが、)
+ブラウザを操作するための API を公開するモジュール
+Selenium
+WebDriver と通信しプログラムからブラウザを操作するライブラリ
