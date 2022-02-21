@@ -1,0 +1,19 @@
+@startuml system構成
+package DockerCompose {
+    class Python {
+        void __construct(Driver driver)
+        string log(string comment)
+    }
+
+    class SeleniumHub {
+        string output()
+    }
+
+    class SeleniumNodeChromedebug {
+        string output()
+    }
+}
+
+Python ..> SeleniumHub ..> SeleniumNodeChromedebug
+@enduml
+

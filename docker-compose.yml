@@ -1,0 +1,26 @@
+version: "3"
+services:
+  selenium:
+    image: selenium/standalone-firefox-debug:3.141.59
+    ports:
+      - 4444:4444 # リファレンス指定のport
+      - 5900:5900 # VNC bind port
+    volumes:
+      - /dev/shm:/dev/shm
+  app:
+    build: ./app
+    # 相対パスで指定。appディレクトリをtarget(コンテナ側)のルートディレクトリに配置
+    volumes:
+      - ./app:/app
+      - /dev/shm:/dev/shm
+    # コンテナに渡す環境変数
+    environment:
+      WORKDIR: /app
+      SELENIUM_URL: http://selenium:4444/wd/hub
+      ENCODING: utf-8
+      LANG: C.UTF-8
+      LANGUAGE: "en_US:en"
+    # 何も起動するものがない場合、ttyをtrue
+    tty: true
+
+
