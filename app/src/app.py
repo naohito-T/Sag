@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # 必要なライブラリのインポート
+import os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys  # OSのKeyがbindされている
 import urllib.parse
@@ -16,14 +17,14 @@ args = sys.argv
 ####################設定####################
 
 # １日にいいね！できる最大値。この数を超えたら処理終了
-max_limit_likes_counter = 500
+max_limit_likes_counter: str = os.environ["MAX_lIMIT_LIKES_COUNTER"]
 
 # 自動いいね！時、エラーがこの数を超えたら処理終了
 max_limit_error_cnt = 10
 
 # Instagramログイン用 ID PASS
-username = "XXXXXXXXXXXXXXXXXXXX"
-password = "XXXXXXXXXXXXXXXXXXXX"
+username: str = os.environ["USER_NAME"]
+password: str = os.environ["PASSWORD"]
 
 # 読み込みファイル名
 file_words = "words_" + str(args[1]) + ".txt"
@@ -41,7 +42,7 @@ likes_cnt, data_other_than_today = readfile.getLikesCntToday(today, file_l_cnt)
 # すでにいいね！したURLの読み込み
 already_likes_url = readfile.readAlreadyLikesURL(file_alu)
 
-# Chromeを起動
+# Firefoxを起動
 driver = webdriver.Firefox()
 
 # Instagram ログインURL
