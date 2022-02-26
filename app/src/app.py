@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# coding: utf-8
+# ↑を入れると勝手に整形しだす
 
 # 必要なライブラリのインポート
 import os
@@ -12,9 +12,21 @@ import sys
 import traceback
 import readfile
 
+# from main import main
+
+# $ python
 args = sys.argv
+# 実行ファイル
+executable_file = args[0]
+# 第一引数
+args_words = args[1]
+
+# 対話式で入れてくのがいいのではないか？
+# yesかnoで対話式か設定ファイルか
+
 # コマンドの引数
 ####################設定####################
+
 
 # １日にいいね！できる最大値。この数を超えたら処理終了
 max_limit_likes_counter: str = os.environ["MAX_lIMIT_LIKES_COUNTER"]
@@ -26,12 +38,28 @@ max_limit_error_cnt = 10
 username: str = os.environ["USER_NAME"]
 password: str = os.environ["PASSWORD"]
 
+
+print(">>>>>>>>Sag Project Start")
+print(">>>>>>>>Give me an argument")
+print(">>>>>>>>  y: Run from argument n: Run from file")
+input_args = input()
+
+if args_words[1] != "file" or input_args == "y":
+    print(">>>>>>>>引数から実行します")
+elif args_words[1] == "file" or input_args != "n":
+    print(">>>>>>>>file読み込みから実行します")
+else:
+    print(">>>>>>>>引き数がないため何もせず終了しました。")
+    exit(0)
+
+
 # 読み込みファイル名
 file_words = "words_" + str(args[1]) + ".txt"
 file_l_cnt = "likes_cnt.txt"
 file_alu = "already_likes_url.txt"
 
 # いいね！したいワードをファイルから取得
+words = open("")
 words = readfile.readWords(file_words)
 
 # 本日、いいね！している数をファイルから取得
@@ -49,14 +77,14 @@ driver = webdriver.Firefox()
 login_url = "https://www.instagram.com/"
 
 # ログインボタン
-#login_path = '//*[@id="react-root"]/section/main/article/div[2]/div[2]/p/a'
+# login_path = '//*[@id="react-root"]/section/main/article/div[2]/div[2]/p/a'
 
 # ログイン用フォームへのパス
-username_path = '//form//div[1]//input'
-password_path = '//form//div[2]//input'
+username_path = "//form//div[1]//input"
+password_path = "//form//div[2]//input"
 
 # いいね！ボタン取得用
-like_x_path = '//main//section//button'
+like_x_path = "//main//section//button"
 
 # Instagramのサイトを開く
 driver.get(login_url)
@@ -123,14 +151,13 @@ for word in words:
                     break
 
                 likes_cnt += 1
-                print('いいね！ {}'.format(likes_cnt))
-                flc = open(file_l_cnt, 'w')
-                flc.write(data_other_than_today + today +
-                          '\t' + str(likes_cnt) + '\n')
+                print("いいね！ {}".format(likes_cnt))
+                flc = open(file_l_cnt, "w")
+                flc.write(data_other_than_today + today + "\t" + str(likes_cnt) + "\n")
                 flc.close()
 
-                fa = open(file_alu, 'a')
-                fa.write(href + '\n')
+                fa = open(file_alu, "a")
+                fa.write(href + "\n")
                 fa.close()
 
                 # [ already_likes_url ] へいいねしたURLを追加
@@ -139,8 +166,9 @@ for word in words:
                 # この地点を通過する時にいいね！max_limit_likes_counter(デフォルト値500)回超えてたら終了
                 # BAN防止
                 if likes_cnt >= max_limit_likes_counter:
-                    print("いいね！の上限回数({})を超えました。処理を終了します。".format(
-                        max_limit_likes_counter))
+                    print(
+                        "いいね！の上限回数({})を超えました。処理を終了します。".format(max_limit_likes_counter)
+                    )
                     off = True
 
             except Exception as e:
