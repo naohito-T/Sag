@@ -20,9 +20,10 @@ def main():
     # injectの雰囲気でやる
     e2e: E2E = E2E()
     # Instagramのサイトを開く
-    e2e.site_opne()
+    e2e.test()
+    # e2e.site_opne()
     # loginする
-    e2e.login()
+    # e2e.login()
 
     # if "アカウントが不正使用されました" in driver.page_source:
     #     print(driver.page_source)

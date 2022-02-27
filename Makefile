@@ -41,7 +41,7 @@ build:
 
 .PHONE: exec
 exec:
-	docker-compose exec app /bin/bash
+	docker-compose exec app /bin/sh
 
 # ---------------------------------------------------------------#
 #  												setup make 													 	 #

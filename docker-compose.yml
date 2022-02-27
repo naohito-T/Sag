@@ -2,12 +2,13 @@ version: "3"
 services:
   selenium:
     # VNC付きのselenium image
-    image: selenium/standalone-firefox-debug:3.141.59
+    # FirefoxとVNCサーバーがインストールされたStandaloneイメージ
+    # image: selenium/standalone-firefox-debug:3.141.59
+    image: selenium/standalone-firefox:4.1.2-20220217
     ports:
       - 4444:4444 # リファレンス指定のport
-      - 5900:5900 # VNC bind port
-    volumes:
-      - /dev/shm:/dev/shm
+      - 5900:5900 # VNC bind port # username : none password : secret
+    shm_size: '2gb'
   app:
     build: ./app
     # 相対パスで指定。appディレクトリをtarget(コンテナ側)のルートディレクトリに配置
@@ -17,10 +18,12 @@ services:
     # コンテナに渡す環境変数
     environment:
       WORKDIR: /app
-      SELENIUM_URL: http://selenium:4444/wd/hub
+      SELENIUM_URL: $SELENIUM_URL
       ENCODING: utf-8
       LANG: C.UTF-8
       LANGUAGE: "en_US:en"
+      USER_NAME: $USER_NAME
+      PASSWORD: $PASSWORD
     # 何も起動するものがない場合、ttyをtrue
     tty: true
 
