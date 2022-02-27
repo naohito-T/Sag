@@ -15,20 +15,22 @@ args_words = args[1]
 
 # 対話式で入れてくのがいいのではないか？
 # yesかnoで対話式か設定ファイルか
-
+# main
 print(">Sag Project Start")
 print(">Give me an argument")
 print(">  y: Run from argument n: Run from file")
 input_args = input()
 
-if args_words[1] != "file" or input_args == "y":
+if input_args == "y":
     print(">>>>>>>>引数から実行します")
-    # 引数をsystemsに代入し渡す
-    args_words
-    main()
-elif args_words[1] == "file" or input_args != "n":
-    print(">>>>>>>>file読み込みから実行します")
-    main()
+    if args_words:
+        # 引数をsystemsのclassに代入し渡す
+        args_words
+        main()
+    else:
+        print(">>>>>>>>引き数がないため何もせず終了しました。")
+        exit(0)
 else:
-    print(">>>>>>>>引き数がないため何もせず終了しました。")
-    exit(0)
+    print(">>>>>>>>file読み込みから実行します")
+    # 引数をsystemsのclassに代入し渡す
+    main()
