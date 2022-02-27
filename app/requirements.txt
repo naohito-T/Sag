@@ -1,2 +1,2 @@
-autopep8
+# versionを指定しないと最新version
 selenium

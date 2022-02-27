@@ -17,6 +17,8 @@ N := \e[0m
 # .envrc書き込みパス
 DECODING_PATH := dotenv ./env/decrypt/.env.
 
+# 今日のいいね数を表示する
+
 # ---------------------------------------------------------------#
 #  											Make for Docker.		 										 #
 # ---------------------------------------------------------------#
@@ -39,7 +41,7 @@ build:
 
 .PHONE: exec
 exec:
-	docker-compose exec app /bin/bash
+	docker-compose exec app /bin/sh
 
 # ---------------------------------------------------------------#
 #  												setup make 													 	 #

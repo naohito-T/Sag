@@ -1,2 +1,5 @@
 # env
 env/decrypt/.env.local
+
+# cache
+__pycache__
