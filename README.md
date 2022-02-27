@@ -21,6 +21,8 @@ $ (make env.decrypt KEY=xxxx FILE_PATH=xxx)
 
 ## Usage
 
+Slackに送信
+cronで対応(macのcronをgitで管理するのは？)
 
 ## Enviroment
 
