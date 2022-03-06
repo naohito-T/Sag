@@ -52,4 +52,9 @@ Finder > 移動 > サーバへ接続 > サーバーアドレス: vnc://localhost
 
 [reference](https://www.selenium.dev/ja/)
 [reference(日本語版)](https://kurozumi.github.io/selenium-python/api.html)
+
+[Pythonで型を極める(3.9)](https://qiita.com/papi_tokei/items/bf652696d6b98f23565a)
+[最強のPython型チェッカーmypy](https://developers.microad.co.jp/entry/2021/10/04/063000#:~:text=mypy%20%E3%81%AFPython3%E3%81%A82.7%E5%90%91%E3%81%91%E3%81%AE%E9%9D%99%E7%9A%84%E5%9E%8B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AB%E3%83%BC%E3%81%A7%E3%81%99%E3%80%82&text=%E5%9E%8B%E3%82%A2%E3%83%8E%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E3%82%82%E3%81%A8,%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%8C%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82)
+[PEP 561 以前の型情報の配布事情](https://blog.ymyzk.com/2018/09/creating-packages-using-pep-561/)
+
 [参考URL](https://ang.tokyo/insta_auto_likes/)
