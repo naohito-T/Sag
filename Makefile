@@ -38,10 +38,20 @@ down:
 build:
 	docker-compose build
 
-
+# appに入る
 .PHONE: exec
 exec:
 	docker-compose exec app /bin/sh
+
+# ---------------------------------------------------------------#
+#  											Make for Selenium.		 									 #
+# ---------------------------------------------------------------#
+
+# test並列実行(Firefox)
+.PHONE: exec.selenium
+exec.selenium:
+	docker-compose run app python3 app/src/app.py
+
 
 # ---------------------------------------------------------------#
 #  												setup make 													 	 #

@@ -32,7 +32,7 @@ input_args = input()
 
 if input_args == "y":
     print(">>>>>>>>引数から実行します")
-    if args_words:
+    if args_words[1:2]:
         # 引数をsystemsのclassに代入し渡す
         args_words
         main()
