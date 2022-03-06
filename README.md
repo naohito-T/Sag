@@ -51,4 +51,5 @@ Finder > 移動 > サーバへ接続 > サーバーアドレス: vnc://localhost
 ## Thank you.
 
 [reference](https://www.selenium.dev/ja/)
+[reference(日本語版)](https://kurozumi.github.io/selenium-python/api.html)
 [参考URL](https://ang.tokyo/insta_auto_likes/)
