@@ -25,6 +25,8 @@ class Config:
         self._password_path: str = "//form//div[2]//input"
         # いいね！ボタン取得用
         self._like_x_path: str = "//main//section//button"
+        # ハッシュタグサーチURL
+        self._tag_search_url: str = "https://www.instagram.com/explore/tags/{}/?hl=ja"
 
     # @see
     # https://naruport.com/blog/2019/8/27/python-tutorial-class-property-getter-setter/
@@ -60,3 +62,7 @@ class Config:
     @property
     def like_x_path(self) -> str:
         return self._like_x_path
+
+    @property
+    def tag_search_url(self) -> str:
+        return self._tag_search_url
